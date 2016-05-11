@@ -1,0 +1,14 @@
+os:
+  - osx
+  - linux
+
+language: generic
+
+sudo: required
+dist: trusty
+
+osx_image: xcode8
+
+script:
+  - eval "$(curl -sL https://swift.skrundz.ca/ci)"
+  - eval "$(curl -sL https://swift.skrundz.ca/codecov)"
