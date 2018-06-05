@@ -1,13 +1,11 @@
-Regex (V2 WIP) [![Swift Version](https://img.shields.io/badge/Swift-4.1-orange.svg)](https://swift.org/download/#releases) [![Platforms](https://img.shields.io/badge/Platforms-macOS%20|%20Linux-lightgray.svg)](https://swift.org/download/#releases) [![Build Status](https://travis-ci.org/DavidSkrundz/Regex.svg?branch=master)](https://travis-ci.org/DavidSkrundz/Regex) [![Codebeat Status](https://codebeat.co/badges/d3bc5b39-aa73-47f5-94e9-3c019368341e)](https://codebeat.co/projects/github-com-davidskrundz-regex) [![Codecov](https://codecov.io/gh/DavidSkrundz/Regex/branch/master/graph/badge.svg)](https://codecov.io/gh/DavidSkrundz/Regex)
-=====
+# Regex (V2 WIP) [![Swift Version](https://img.shields.io/badge/Swift-4.1-orange.svg)](https://swift.org/download/#releases) [![Platforms](https://img.shields.io/badge/Platforms-macOS%20|%20Linux-lightgray.svg)](https://swift.org/download/#releases) [![Build Status](https://travis-ci.org/DavidSkrundz/Regex.svg?branch=master)](https://travis-ci.org/DavidSkrundz/Regex) [![Codebeat Status](https://codebeat.co/badges/d3bc5b39-aa73-47f5-94e9-3c019368341e)](https://codebeat.co/projects/github-com-davidskrundz-regex) [![Codecov](https://codecov.io/gh/DavidSkrundz/Regex/branch/master/graph/badge.svg)](https://codecov.io/gh/DavidSkrundz/Regex)
 
 A pure Swift implementation of a Regular Expression Engine
 
 **Trying again with V2 using DFAs instead of NFAs to get grep-like performance**
 
 
-Usage
------
+## Usage
 
 To avoid compiling overhead it is possible to create a `Regex` instance
 
@@ -57,8 +55,8 @@ let regex = try! Regex(pattern: "/\\w+/ig")
 ```
 
 
-Supported Operations
---------------------
+## Supported Operations
+
 [ ] 
 ### Character Classes
 | Pattern | Descripion | Supported |
@@ -151,7 +149,7 @@ Supported Operations
 ### Alternation
 | Pattern | Descripion | Supported |
 |---------|------------|-----------|
-| `|` | Everything before or everything after | <ul><li>[ ] </li></ul> |
+| `\|` | Everything before or everything after | <ul><li>[ ] </li></ul> |
 
 ### Flags
 | Pattern | Descripion | Supported |
@@ -161,8 +159,7 @@ Supported Operations
 | `m` | Multiline | <ul><li>[ ] </li></ul> |
 
 
-Inner Workings
---------------
+## Inner Workings
 
 (Similar to before)
 
@@ -176,14 +173,13 @@ Inner Workings
 ---
 
 
-Note
-====
+# Note
+
 Swift treats `\r\n` as a single `Character`. Use `\n\r` to have both.
 
 
 
-Resources
-=========
+# Resources
 
 - [regexr.com](http://www.regexr.com) - Regex testing
 - [swtch.com](https://swtch.com/~rsc/regexp/) - Implementing Regular Expressions
