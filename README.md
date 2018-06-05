@@ -45,9 +45,9 @@ fourLetterWords = [
 
 By default the `Global` flag is active. To change which flag are active, add a `/` at the start of the pattern, and add `/<flags>` at the end. The available flags are:
 
-- `g` `Global`
-- `i` `Case Insensitive`
-- `m` `Multiline`
+- `g` `Global` - Allows multiple matches
+- `i` `Case Insensitive` - Case insensitive matching
+- `m` `Multiline` - `^` and `$` also match the begining and end of a line
 
 ```Swift
 // Global and Case Insensitive search
