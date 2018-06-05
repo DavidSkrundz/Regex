@@ -117,6 +117,7 @@ let regex = try! Regex(pattern: "/\\w+/ig")
 | `(ABC)` | Capture group | <ul><li>[ ] </li></ul> |
 | `(<name>ABC)` | Named capture group | <ul><li>[ ] </li></ul> |
 | `\1` | Back reference | <ul><li>[ ] </li></ul> |
+| `\'name'` | Named back reference | <ul><li>[ ] </li></ul> |
 | `(?:ABC)` | Non-capturing group | <ul><li>[ ] </li></ul> |
 | `(?=ABC)` | Positive lookahead | <ul><li>[ ] </li></ul> |
 | `(?!ABC)` | Negative lookahead | <ul><li>[ ] </li></ul> |
