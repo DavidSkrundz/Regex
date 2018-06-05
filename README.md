@@ -115,6 +115,7 @@ let regex = try! Regex(pattern: "/\\w+/ig")
 | Pattern | Descripion | Supported |
 |---------|------------|-----------|
 | `(ABC)` | Capture group | <ul><li>[ ] </li></ul> |
+| `(<name>ABC)` | Named capture group | <ul><li>[ ] </li></ul> |
 | `\1` | Back reference | <ul><li>[ ] </li></ul> |
 | `(?:ABC)` | Non-capturing group | <ul><li>[ ] </li></ul> |
 | `(?=ABC)` | Positive lookahead | <ul><li>[ ] </li></ul> |
@@ -182,3 +183,4 @@ Swift treats `\r\n` as a single `Character`. Use `\n\r` to have both.
 
 - [regexr.com](http://www.regexr.com) - Regex testing
 - [swtch.com](https://swtch.com/~rsc/regexp/) - Implementing Regular Expressions
+- [Powerset construction](https://en.wikipedia.org/wiki/Powerset_construction) - NFA to DFA
