@@ -57,7 +57,6 @@ let regex = try! Regex(pattern: "/\\w+/ig")
 
 ## Supported Operations
 
-[ ] 
 ### Character Classes
 | Pattern | Descripion | Supported |
 |---------|------------|-----------|
