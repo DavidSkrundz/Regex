@@ -7,10 +7,17 @@
 import XCTest
 
 class LexerTests: XCTestCase {
-	func testTest() {
+	func testCharacters() {
+		let tokens = try! Lexer.lex("abcd")
+		XCTAssertEqual(tokens, [
+			.Character("a"),
+			.Character("b"),
+			.Character("c"),
+			.Character("d"),
+		])
 	}
 	
 	static var allTests = [
-		("testTest", testTest),
+		("testCharacters", testCharacters),
 	]
 }
