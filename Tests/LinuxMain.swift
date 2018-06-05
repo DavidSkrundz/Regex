@@ -7,5 +7,7 @@
 import XCTest
 
 XCTMain([
+	testCase(LexerTests.allTests),
+	
 	testCase(RegexTests.allTests),
 ])
