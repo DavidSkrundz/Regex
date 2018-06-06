@@ -3,29 +3,29 @@
 //  Regex
 //
 
-import Graph
-
 internal struct Parser {
-	private var graph = Graph<Int, Symbol>()
-	private var lastVertex: Vertex<Int>!
+	private var automaton = Automaton()
+	private var lastState: State!
 	
 	private init() {
-		self.lastVertex = self.graph.addVertex(0)
+		self.lastState = self.automaton.newState()
+		self.automaton.initialStates = [self.lastState]
 	}
 	
-	internal static func parse(_ tokens: [Token]) throws -> Graph<Int, Symbol> {
+	internal static func parse(_ tokens: [Token]) throws -> Automaton {
 		var parser = Parser()
 		try tokens.generator().forEach { try parser.parse($0) }
-		return parser.graph
+		parser.automaton.acceptingStates = [parser.lastState]
+		return parser.automaton
 	}
 	
 	private mutating func parse(_ token: Token) throws {
 		switch token {
 			case .Character(let character):
-				let newVertex = self.graph.addVertex(self.graph.vertices.count)
-				self.graph.addEdge(from: lastVertex, to: newVertex,
-				                   data: .Character(character))
-				self.lastVertex = newVertex
+				let newState = self.automaton.newState()
+				self.automaton.addTransition(from: lastState, to: newState,
+				                             symbol: .Character(character))
+				self.lastState = newState
 		}
 	}
 }
