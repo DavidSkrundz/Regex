@@ -4,17 +4,17 @@
 //
 
 internal struct Compiler {
-	private var automaton = Automaton()
+	private var dfa = Automaton()
 	
 	private init() {}
 	
-	internal static func compile(_ automaton: Automaton) -> Automaton {
+	internal static func compile(_ nfa: Automaton) -> Automaton {
 		var compiler = Compiler()
-		compiler.compile(automaton)
-		return compiler.automaton
+		compiler.compile(nfa)
+		return compiler.dfa
 	}
 	
-	private mutating func compile(_ automaton: Automaton) {
+	private mutating func compile(_ nfa: Automaton) {
 		// TODO:
 	}
 }
