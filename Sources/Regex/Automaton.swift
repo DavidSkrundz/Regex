@@ -21,10 +21,6 @@ internal class Automaton {
 	}
 	
 	internal func addTransition(from: State, to: State, symbol: Symbol) {
-		var stateDict = self.transitions[from] ?? [:]
-		var set = stateDict[symbol] ?? []
-		set.insert(to)
-		stateDict[symbol] = set
-		self.transitions[from] = stateDict
+		self.transitions[from, default: [:]][symbol, default: []].insert(to)
 	}
 }
