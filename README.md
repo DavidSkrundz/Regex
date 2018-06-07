@@ -185,3 +185,4 @@ Swift treats `\r\n` as a single `Character`. Use `\n\r` to have both.
 - [regexr.com](http://www.regexr.com) - Regex testing
 - [swtch.com](https://swtch.com/~rsc/regexp/) - Implementing Regular Expressions
 - [Powerset construction](https://en.wikipedia.org/wiki/Powerset_construction) - NFA to DFA
+- [Minimization](https://en.wikipedia.org/wiki/DFA_minimization)
