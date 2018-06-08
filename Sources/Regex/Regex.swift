@@ -3,8 +3,6 @@
 //  Regex
 //
 
-import Util
-
 /// Manages an `Engine` and compiles the `pattern` into a runnable format.
 ///
 /// Usage sample:

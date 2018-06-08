@@ -3,8 +3,6 @@
 //  Regex
 //
 
-import Util
-
 extension Parser {
 	/// Handles the conversion from a group token to a group symbol
 	internal mutating func parseGroup(_ groupToken: Token) throws {

@@ -3,8 +3,6 @@
 //  Regex
 //
 
-import Util
-
 extension Engine {
 	/// Called to run the program agains the `string`
 	///

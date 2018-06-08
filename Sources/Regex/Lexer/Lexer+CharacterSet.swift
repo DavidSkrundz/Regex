@@ -3,8 +3,6 @@
 //  Regex
 //
 
-import Util
-
 extension Lexer {
 	/// Tokenizes character sets. Parses the whole block from `[` to `]` and
 	/// returns a `Token` representing the whole set

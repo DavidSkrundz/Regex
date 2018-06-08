@@ -3,6 +3,8 @@
 //  Regex
 //
 
+import Generator
+
 /// The `Compiler` takes a `[Symbol]` and converts it to a `[Instruction]` that is runnable by the `Engine`
 ///
 /// - Author: David Skrundz

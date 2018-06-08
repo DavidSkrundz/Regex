@@ -3,8 +3,6 @@
 //  Regex
 //
 
-import Util
-
 /// The `Engine` takes a program (`[Instruction]`) and runs it against an input `String` when `match()` is called.
 /// The `Engine` does the final processing before outputing found matches.
 ///
@@ -19,7 +17,7 @@ internal struct Engine {
 	internal let groupCount: Int
 	
 	internal init(program: [Instruction]) {
-		self.groupCount = program.flatMap { (instruction) -> Int? in
+		self.groupCount = program.compactMap { (instruction) -> Int? in
 				if case let Instruction.GroupSave(groupIndex, .Start) = instruction { return groupIndex }
 				return nil
 			}

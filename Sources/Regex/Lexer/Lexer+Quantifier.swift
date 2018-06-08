@@ -3,8 +3,6 @@
 //  Regex
 //
 
-import Util
-
 private let EMPTY_NUMBER = -1
 extension Lexer {
 	/// Tokenizes numeric quantifiers

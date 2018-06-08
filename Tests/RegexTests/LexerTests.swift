@@ -11,7 +11,7 @@ class LexerTests: XCTestCase {
 		let tokens = try! Lexer.lex(".")
 		XCTAssertEqual(tokens, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("\n\r\r\n".characters)),
+			.CharacterSet(include: Set(), exclude: Set("\n\r\r\n")),
 		])
 	}
 	
@@ -27,7 +27,7 @@ class LexerTests: XCTestCase {
 		let tokens = try! Lexer.lex("\\w")
 		XCTAssertEqual(tokens, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters), exclude: Set()),
+			.CharacterSet(include: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"), exclude: Set()),
 		])
 	}
 	
@@ -35,7 +35,7 @@ class LexerTests: XCTestCase {
 		let tokens = try! Lexer.lex("\\W")
 		XCTAssertEqual(tokens, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters)),
+			.CharacterSet(include: Set(), exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")),
 		])
 	}
 	
@@ -43,7 +43,7 @@ class LexerTests: XCTestCase {
 		let tokens = try! Lexer.lex("\\d")
 		XCTAssertEqual(tokens, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("0123456789".characters), exclude: Set()),
+			.CharacterSet(include: Set("0123456789"), exclude: Set()),
 		])
 	}
 	
@@ -51,7 +51,7 @@ class LexerTests: XCTestCase {
 		let tokens = try! Lexer.lex("\\D")
 		XCTAssertEqual(tokens, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("0123456789".characters)),
+			.CharacterSet(include: Set(), exclude: Set("0123456789")),
 		])
 	}
 	
@@ -59,7 +59,7 @@ class LexerTests: XCTestCase {
 		let tokens = try! Lexer.lex("\\s")
 		XCTAssertEqual(tokens, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(" \n\r\r\n\t\u{000B}\u{000C}".characters), exclude: Set()),
+			.CharacterSet(include: Set(" \n\r\r\n\t\u{000B}\u{000C}"), exclude: Set()),
 		])
 	}
 	
@@ -67,7 +67,7 @@ class LexerTests: XCTestCase {
 		let tokens = try! Lexer.lex("\\S")
 		XCTAssertEqual(tokens, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set(" \n\r\r\n\t\u{000B}\u{000C}".characters)),
+			.CharacterSet(include: Set(), exclude: Set(" \n\r\r\n\t\u{000B}\u{000C}")),
 		])
 	}
 	
@@ -75,7 +75,7 @@ class LexerTests: XCTestCase {
 		let tokens = try! Lexer.lex("[ABC]")
 		XCTAssertEqual(tokens, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("ABC".characters), exclude: Set()),
+			.CharacterSet(include: Set("ABC"), exclude: Set()),
 		])
 	}
 	
@@ -83,7 +83,7 @@ class LexerTests: XCTestCase {
 		let tokens = try! Lexer.lex("[^ABC]")
 		XCTAssertEqual(tokens, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("ABC".characters)),
+			.CharacterSet(include: Set(), exclude: Set("ABC")),
 		])
 	}
 	
@@ -91,7 +91,7 @@ class LexerTests: XCTestCase {
 		let tokens = try! Lexer.lex("[A-Z]")
 		XCTAssertEqual(tokens, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters), exclude: Set()),
+			.CharacterSet(include: Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), exclude: Set()),
 		])
 	}
 	
@@ -211,7 +211,7 @@ class LexerTests: XCTestCase {
 		let tokens = try! Lexer.lex("[\\100\\xA9\\u00C7\\cI]")
 		XCTAssertEqual(tokens, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("@©Ç\t".characters), exclude: Set())
+			.CharacterSet(include: Set("@©Ç\t"), exclude: Set())
 		])
 	}
 	
@@ -468,8 +468,8 @@ class LexerTests: XCTestCase {
 			.Character("a"),
 			.Character("b"),
 			.CharacterSet(
-				include: Set("cd".characters),
-				exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters)
+				include: Set("cd"),
+				exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")
 			),
 			.Character("p"), // \u0050 -> P
 		])

@@ -10,12 +10,12 @@ class ParserTests: XCTestCase {
 	func testAllCharactersButLines() {
 		let tokens: [Token] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("\n\r\r\n".characters)),
+			.CharacterSet(include: Set(), exclude: Set("\n\r\r\n")),
 		]
 		let symbols = try! Parser.parse(tokens)
 		XCTAssertEqual(symbols, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("\n\r\r\n".characters)),
+			.CharacterSet(include: Set(), exclude: Set("\n\r\r\n")),
 		])
 	}
 	
@@ -34,108 +34,108 @@ class ParserTests: XCTestCase {
 	func testWordCharacters() {
 		let tokens: [Token] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters), exclude: Set()),
+			.CharacterSet(include: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"), exclude: Set()),
 		]
 		let symbols = try! Parser.parse(tokens)
 		XCTAssertEqual(symbols, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters), exclude: Set()),
+			.CharacterSet(include: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"), exclude: Set()),
 		])
 	}
 	
 	func testNonWordCharacters() {
 		let tokens: [Token] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters)),
+			.CharacterSet(include: Set(), exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")),
 		]
 		let symbols = try! Parser.parse(tokens)
 		XCTAssertEqual(symbols, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters)),
+			.CharacterSet(include: Set(), exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")),
 		])
 	}
 	
 	func testDigits() {
 		let tokens: [Token] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("0123456789".characters), exclude: Set()),
+			.CharacterSet(include: Set("0123456789"), exclude: Set()),
 		]
 		let symbols = try! Parser.parse(tokens)
 		XCTAssertEqual(symbols, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("0123456789".characters), exclude: Set()),
+			.CharacterSet(include: Set("0123456789"), exclude: Set()),
 		])
 	}
 	
 	func testNotDigits() {
 		let tokens: [Token] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("0123456789".characters)),
+			.CharacterSet(include: Set(), exclude: Set("0123456789")),
 		]
 		let symbols = try! Parser.parse(tokens)
 		XCTAssertEqual(symbols, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("0123456789".characters)),
+			.CharacterSet(include: Set(), exclude: Set("0123456789")),
 		])
 	}
 	
 	func testWhitespace() {
 		let tokens: [Token] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(" \n\r\r\n\t\u{000B}\u{000C}".characters), exclude: Set()),
+			.CharacterSet(include: Set(" \n\r\r\n\t\u{000B}\u{000C}"), exclude: Set()),
 		]
 		let symbols = try! Parser.parse(tokens)
 		XCTAssertEqual(symbols, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(" \n\r\r\n\t\u{000B}\u{000C}".characters), exclude: Set()),
+			.CharacterSet(include: Set(" \n\r\r\n\t\u{000B}\u{000C}"), exclude: Set()),
 		])
 	}
 	
 	func testNotWhitespace() {
 		let tokens: [Token] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set(" \n\r\r\n\t\u{000B}\u{000C}".characters)),
+			.CharacterSet(include: Set(), exclude: Set(" \n\r\r\n\t\u{000B}\u{000C}")),
 		]
 		let symbols = try! Parser.parse(tokens)
 		XCTAssertEqual(symbols, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set(" \n\r\r\n\t\u{000B}\u{000C}".characters)),
+			.CharacterSet(include: Set(), exclude: Set(" \n\r\r\n\t\u{000B}\u{000C}")),
 		])
 	}
 	
 	func testSet() {
 		let tokens: [Token] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("ABC".characters), exclude: Set()),
+			.CharacterSet(include: Set("ABC"), exclude: Set()),
 		]
 		let symbols = try! Parser.parse(tokens)
 		XCTAssertEqual(symbols, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("ABC".characters), exclude: Set()),
+			.CharacterSet(include: Set("ABC"), exclude: Set()),
 		])
 	}
 	
 	func testNotSet() {
 		let tokens: [Token] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("ABC".characters)),
+			.CharacterSet(include: Set(), exclude: Set("ABC")),
 		]
 		let symbols = try! Parser.parse(tokens)
 		XCTAssertEqual(symbols, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("ABC".characters)),
+			.CharacterSet(include: Set(), exclude: Set("ABC")),
 		])
 	}
 	
 	func testSetRange() {
 		let tokens: [Token] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters), exclude: Set()),
+			.CharacterSet(include: Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), exclude: Set()),
 		]
 		let symbols = try! Parser.parse(tokens)
 		XCTAssertEqual(symbols, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters), exclude: Set()),
+			.CharacterSet(include: Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), exclude: Set()),
 		])
 	}
 	
@@ -300,12 +300,12 @@ class ParserTests: XCTestCase {
 	func testEscapeCharactersInSets() {
 		let tokens: [Token] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("@©Ç\t".characters), exclude: Set()),
+			.CharacterSet(include: Set("@©Ç\t"), exclude: Set()),
 		]
 		let symbols = try! Parser.parse(tokens)
 		XCTAssertEqual(symbols, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("@©Ç\t".characters), exclude: Set()),
+			.CharacterSet(include: Set("@©Ç\t"), exclude: Set()),
 		])
 	}
 	
@@ -755,14 +755,14 @@ class ParserTests: XCTestCase {
 			.CaseInsensitiveFlag,
 			.Character("a"),
 			.Character("b"),
-			.CharacterSet(include: Set("cd".characters), exclude: Set("abcdefghijklmnopqrstuvwxyz0123456789_".characters)),
+			.CharacterSet(include: Set("cd"), exclude: Set("abcdefghijklmnopqrstuvwxyz0123456789_")),
 		]
 		let symbols = try! Parser.parse(tokens)
 		XCTAssertEqual(symbols, [
 			.CaseInsensitiveFlag,
 			.Character("a"),
 			.Character("b"),
-			.CharacterSet(include: Set("cd".characters), exclude: Set("abcdefghijklmnopqrstuvwxyz0123456789_".characters)),
+			.CharacterSet(include: Set("cd"), exclude: Set("abcdefghijklmnopqrstuvwxyz0123456789_")),
 		])
 	}
 	

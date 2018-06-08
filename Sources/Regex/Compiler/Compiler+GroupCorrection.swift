@@ -3,8 +3,6 @@
 //  Regex
 //
 
-import Util
-
 extension Compiler {
 	/// Applies an `offset` to any `Instruction` that references an instruction index
 	fileprivate static func applyGroupCorrection(_ instructions: [Instruction], offset: Int) -> [Instruction] {

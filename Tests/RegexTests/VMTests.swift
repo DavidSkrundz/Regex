@@ -10,7 +10,7 @@ class VMTests: XCTestCase {
 	func testAllCharactersButLines() {
 		let instructions: [Instruction] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("\n\r\r\n".characters)),
+			.CharacterSet(include: Set(), exclude: Set("\n\r\r\n")),
 		]
 		let engine = Engine(program: instructions)
 		let matches = engine.match("ab\nc")
@@ -38,7 +38,7 @@ class VMTests: XCTestCase {
 	func testWordCharacters() {
 		let instructions: [Instruction] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters), exclude: Set()),
+			.CharacterSet(include: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"), exclude: Set()),
 		]
 		let engine = Engine(program: instructions)
 		let matches = engine.match("aA 90")
@@ -53,7 +53,7 @@ class VMTests: XCTestCase {
 	func testNonWordCharacters() {
 		let instructions: [Instruction] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters)),
+			.CharacterSet(include: Set(), exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")),
 		]
 		let engine = Engine(program: instructions)
 		let matches = engine.match("aA 90")
@@ -65,7 +65,7 @@ class VMTests: XCTestCase {
 	func testDigits() {
 		let instructions: [Instruction] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("0123456789".characters), exclude: Set()),
+			.CharacterSet(include: Set("0123456789"), exclude: Set()),
 		]
 		let engine = Engine(program: instructions)
 		let matches = engine.match("1_7")
@@ -78,7 +78,7 @@ class VMTests: XCTestCase {
 	func testNotDigits() {
 		let instructions: [Instruction] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("0123456789".characters)),
+			.CharacterSet(include: Set(), exclude: Set("0123456789")),
 		]
 		let engine = Engine(program: instructions)
 		let matches = engine.match("1_9")
@@ -90,7 +90,7 @@ class VMTests: XCTestCase {
 	func testWhitespace() {
 		let instructions: [Instruction] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(" \n\r\t\u{000B}\u{000C}".characters), exclude: Set()),
+			.CharacterSet(include: Set(" \n\r\t\u{000B}\u{000C}"), exclude: Set()),
 		]
 		let engine = Engine(program: instructions)
 		let matches = engine.match("a\t\n")
@@ -103,7 +103,7 @@ class VMTests: XCTestCase {
 	func testNotWhitespace() {
 		let instructions: [Instruction] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set(" \n\r\t\u{000B}\u{000C}".characters)),
+			.CharacterSet(include: Set(), exclude: Set(" \n\r\t\u{000B}\u{000C}")),
 		]
 		let engine = Engine(program: instructions)
 		let matches = engine.match("a\t\n")
@@ -115,7 +115,7 @@ class VMTests: XCTestCase {
 	func testSet() {
 		let instructions: [Instruction] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("ABC".characters), exclude: Set()),
+			.CharacterSet(include: Set("ABC"), exclude: Set()),
 		]
 		let engine = Engine(program: instructions)
 		let matches = engine.match("zABCz")
@@ -129,7 +129,7 @@ class VMTests: XCTestCase {
 	func testNotSet() {
 		let instructions: [Instruction] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("ABC".characters)),
+			.CharacterSet(include: Set(), exclude: Set("ABC")),
 		]
 		let engine = Engine(program: instructions)
 		let matches = engine.match("zAbCz")
@@ -143,7 +143,7 @@ class VMTests: XCTestCase {
 	func testSetRange() {
 		let instructions: [Instruction] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters), exclude: Set()),
+			.CharacterSet(include: Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), exclude: Set()),
 		]
 		let engine = Engine(program: instructions)
 		let matches = engine.match("Aa")
@@ -313,7 +313,7 @@ class VMTests: XCTestCase {
 	func testEscapeCharactersInSets() {
 		let instructions: [Instruction] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("@©Ç\t".characters), exclude: Set()),
+			.CharacterSet(include: Set("@©Ç\t"), exclude: Set()),
 		]
 		let engine = Engine(program: instructions)
 		let matches = engine.match("@©Ç")
@@ -777,7 +777,7 @@ class VMTests: XCTestCase {
 			.CaseInsensitiveFlag,
 			.Character("a"),
 			.Character("b"),
-			.CharacterSet(include: Set("cd".characters), exclude: Set("abcdefghijklmnopqrstuvwxyz0123456789_".characters)),
+			.CharacterSet(include: Set("cd"), exclude: Set("abcdefghijklmnopqrstuvwxyz0123456789_")),
 		]
 		let engine = Engine(program: instructions)
 		let matches = engine.match("AbC")

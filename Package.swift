@@ -1,3 +1,4 @@
+// swift-tools-version:4.1
 //
 //  Package.swift
 //  Regex
@@ -7,22 +8,29 @@ import PackageDescription
 
 let package = Package(
 	name: "Regex",
+	products: [
+		.library(
+			name: "Regex",
+			targets: ["Regex"]),
+		.library(
+			name: "sRegex",
+			type: .static,
+			targets: ["Regex"]),
+		.library(
+			name: "dRegex",
+			type: .dynamic,
+			targets: ["Regex"])
+	],
 	dependencies: [
-		.Package(url: "https://github.com/DavidSkrundz/UnicodeOperators.git", majorVersion: 1, minor: 0),
-		.Package(url: "https://github.com/DavidSkrundz/Util.git", majorVersion: 1, minor: 0),
+		.package(url: "https://github.com/DavidSkrundz/Collections.git",
+		         .upToNextMinor(from: "1.1.0"))
+	],
+	targets: [
+		.target(
+			name: "Regex",
+			dependencies: ["Generator"]),
+		.testTarget(
+			name: "RegexTests",
+			dependencies: ["Regex"])
 	]
 )
-
-let staticLibrary = Product(
-	name: "Regex",
-	type: .Library(.Static),
-	modules: ["Regex"]
-)
-let dynamicLibrary = Product(
-	name: "Regex",
-	type: .Library(.Dynamic),
-	modules: ["Regex"]
-)
-
-products.append(staticLibrary)
-products.append(dynamicLibrary)

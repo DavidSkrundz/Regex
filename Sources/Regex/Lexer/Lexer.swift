@@ -3,9 +3,7 @@
 //  Regex
 //
 
-import Util
-
-private let NewlineCharacters = "\n\r\r\n".characters
+private let NewlineCharacters = "\n\r\r\n"
 
 /// The `Tokenizer` takes a pattern `String` and converts it to an
 /// `Array<Token>` for parsing later. The goal of the `Tokenizer` is to decouple
@@ -93,7 +91,7 @@ internal struct Lexer {
 					.map { $0.reduce("") { $0 + String($1) } }
 			
 				let token: (Int, Token) = string
-					.map { ($0.length, Lexer.groupTokens[$0]) }
+					.map { ($0.count, Lexer.groupTokens[$0]) }
 					.filter { $0.1 != nil }
 					.map { ($0.0, $0.1!) }
 					.first ?? (0, .StartCaptureGroup)

@@ -3,9 +3,6 @@
 //  Regex
 //
 
-import UnicodeOperators
-import Util
-
 private let Numbers = "0123456789"
 private let LowercaseLetters = "abcdefghijklmnopqrstuvwxyz"
 private let UppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -68,20 +65,20 @@ extension Lexer {
 		"b" : .WordBoundary,
 		"B" : .NotWordBoundary,
 		"s" : .CharacterSet(
-			include: Set(" \n\r\r\n\t\u{000B}\u{000C}".characters),
+			include: Set(" \n\r\r\n\t\u{000B}\u{000C}"),
 			exclude: Set()
 		),
 		"S" : .CharacterSet(
 			include: Set(),
-			exclude: Set(" \n\r\r\n\t\u{000B}\u{000C}".characters)
+			exclude: Set(" \n\r\r\n\t\u{000B}\u{000C}")
 		),
 		"d" : .CharacterSet(
-			include: Set("0123456789".characters),
+			include: Set("0123456789"),
 			exclude: Set()
 		),
 		"D" : .CharacterSet(
 			include: Set(),
-			exclude: Set("0123456789".characters)
+			exclude: Set("0123456789")
 		),
 	]
 	
@@ -98,13 +95,13 @@ extension Lexer {
 				return Lexer.escapedTokens[c]!
 			case "w":
 				return .CharacterSet(
-					include: Set(WordCharacters.characters),
+					include: Set(WordCharacters),
 					exclude: Set()
 				)
 			case "W":
 				return .CharacterSet(
 					include: Set(),
-					exclude: Set(WordCharacters.characters)
+					exclude: Set(WordCharacters)
 				)
 			case let character where character.isOctDigit:
 				return self.processOctalNumber(first: character)
@@ -129,7 +126,7 @@ extension Lexer {
 			if let character = self.state.generator.peek(),
 			                                              character.isOctDigit {
 				let newString = octalString + String(character)
-				if Lexer.StringToInt(newString, base: 8) ≤ 255 {
+				if Lexer.StringToInt(newString, base: 8) <= 255 {
 					octalString.append(character)
 					self.state.generator.advance()
 				} else {

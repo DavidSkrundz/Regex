@@ -17,7 +17,7 @@ extension Lexer {
 	internal mutating func processFlags() throws {
 		if self.state.pattern.first == "/" {
 			self.state.pattern.removeFirst()
-			while self.state.pattern.length > 0 {
+			while self.state.pattern.count > 0 {
 				switch self.state.pattern.removeLast() {
 					case "g":
 						self.tokens.append(.GlobalSearchFlag)

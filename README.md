@@ -1,4 +1,4 @@
-Regex [![Swift Version](https://img.shields.io/badge/Swift-3.1-orange.svg)](https://swift.org/download/#releases) [![Platforms](https://img.shields.io/badge/Platforms-macOS%20|%20Linux-lightgray.svg)](https://swift.org/download/#releases) [![Build Status](https://travis-ci.org/DavidSkrundz/Regex.svg?branch=master)](https://travis-ci.org/DavidSkrundz/Regex) [![Codebeat Status](https://codebeat.co/badges/d3bc5b39-aa73-47f5-94e9-3c019368341e)](https://codebeat.co/projects/github-com-davidskrundz-regex) [![Codecov](https://codecov.io/gh/DavidSkrundz/Regex/branch/master/graph/badge.svg)](https://codecov.io/gh/DavidSkrundz/Regex)
+Regex [![Swift Version](https://img.shields.io/badge/Swift-4.1-orange.svg)](https://swift.org/download/#releases) [![Platforms](https://img.shields.io/badge/Platforms-macOS%20|%20Linux-lightgray.svg)](https://swift.org/download/#releases)
 =====
 
 A pure Swift implementation of a Regular Expression Engine

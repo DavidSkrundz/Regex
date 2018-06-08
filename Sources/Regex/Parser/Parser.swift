@@ -3,8 +3,6 @@
 //  Regex
 //
 
-import Util
-
 /// The `Parser` takes an `Array<Token>` and converts it to an `Array<Symbol>`
 /// for compiling. The goal of the `Parser` is to convert from the linearity of
 /// `Token`s to the final structure of the expression.
@@ -78,7 +76,7 @@ internal struct Parser {
 				self.state.alternating = true
 				
 				let leftSymbols = self.symbols
-				let remainingTokens = self.state.generator.remainingItems()
+				let remainingTokens = self.state.generator.remaining().toArray()
 				let rightSymbols = try Parser.parse(remainingTokens)
 				self.symbols = [.Alternation(leftSymbols, rightSymbols)]
 			

@@ -7,7 +7,6 @@
 
 extension ThreadID {
 	init() {
-		self.globalID = 0
-		self.parentIDs = [0]
+		self.init(0, [0])
 	}
 }

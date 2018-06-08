@@ -10,12 +10,12 @@ class CompilerTests: XCTestCase {
 	func testAllCharactersButLines() {
 		let symbols: [Symbol] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("\n\r\r\n".characters)),
+			.CharacterSet(include: Set(), exclude: Set("\n\r\r\n")),
 		]
 		let instructions = Compiler.compile(symbols)
 		XCTAssertEqual(instructions, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("\n\r\r\n".characters)),
+			.CharacterSet(include: Set(), exclude: Set("\n\r\r\n")),
 		])
 	}
 	
@@ -34,108 +34,108 @@ class CompilerTests: XCTestCase {
 	func testWordCharacters() {
 		let symbols: [Symbol] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters), exclude: Set()),
+			.CharacterSet(include: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"), exclude: Set()),
 		]
 		let instructions = Compiler.compile(symbols)
 		XCTAssertEqual(instructions, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters), exclude: Set()),
+			.CharacterSet(include: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"), exclude: Set()),
 		])
 	}
 	
 	func testNonWordCharacters() {
 		let symbols: [Symbol] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters)),
+			.CharacterSet(include: Set(), exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")),
 		]
 		let instructions = Compiler.compile(symbols)
 		XCTAssertEqual(instructions, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_".characters)),
+			.CharacterSet(include: Set(), exclude: Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")),
 		])
 	}
 	
 	func testDigits() {
 		let symbols: [Symbol] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("0123456789".characters), exclude: Set()),
+			.CharacterSet(include: Set("0123456789"), exclude: Set()),
 		]
 		let instructions = Compiler.compile(symbols)
 		XCTAssertEqual(instructions, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("0123456789".characters), exclude: Set()),
+			.CharacterSet(include: Set("0123456789"), exclude: Set()),
 		])
 	}
 	
 	func testNotDigits() {
 		let symbols: [Symbol] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("0123456789".characters)),
+			.CharacterSet(include: Set(), exclude: Set("0123456789")),
 		]
 		let instructions = Compiler.compile(symbols)
 		XCTAssertEqual(instructions, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("0123456789".characters)),
+			.CharacterSet(include: Set(), exclude: Set("0123456789")),
 		])
 	}
 	
 	func testWhitespace() {
 		let symbols: [Symbol] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(" \n\r\r\n\t\u{000B}\u{000C}".characters), exclude: Set()),
+			.CharacterSet(include: Set(" \n\r\r\n\t\u{000B}\u{000C}"), exclude: Set()),
 		]
 		let instructions = Compiler.compile(symbols)
 		XCTAssertEqual(instructions, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(" \n\r\r\n\t\u{000B}\u{000C}".characters), exclude: Set()),
+			.CharacterSet(include: Set(" \n\r\r\n\t\u{000B}\u{000C}"), exclude: Set()),
 		])
 	}
 	
 	func testNotWhitespace() {
 		let symbols: [Symbol] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set(" \n\r\r\n\t\u{000B}\u{000C}".characters)),
+			.CharacterSet(include: Set(), exclude: Set(" \n\r\r\n\t\u{000B}\u{000C}")),
 		]
 		let instructions = Compiler.compile(symbols)
 		XCTAssertEqual(instructions, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set(" \n\r\r\n\t\u{000B}\u{000C}".characters)),
+			.CharacterSet(include: Set(), exclude: Set(" \n\r\r\n\t\u{000B}\u{000C}")),
 		])
 	}
 	
 	func testSet() {
 		let symbols: [Symbol] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("ABC".characters), exclude: Set()),
+			.CharacterSet(include: Set("ABC"), exclude: Set()),
 		]
 		let instructions = Compiler.compile(symbols)
 		XCTAssertEqual(instructions, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("ABC".characters), exclude: Set()),
+			.CharacterSet(include: Set("ABC"), exclude: Set()),
 		])
 	}
 	
 	func testNotSet() {
 		let symbols: [Symbol] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("ABC".characters)),
+			.CharacterSet(include: Set(), exclude: Set("ABC")),
 		]
 		let instructions = Compiler.compile(symbols)
 		XCTAssertEqual(instructions, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set(), exclude: Set("ABC".characters)),
+			.CharacterSet(include: Set(), exclude: Set("ABC")),
 		])
 	}
 	
 	func testSetRange() {
 		let symbols: [Symbol] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters), exclude: Set()),
+			.CharacterSet(include: Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), exclude: Set()),
 		]
 		let instructions = Compiler.compile(symbols)
 		XCTAssertEqual(instructions, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters), exclude: Set()),
+			.CharacterSet(include: Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), exclude: Set()),
 		])
 	}
 	
@@ -300,12 +300,12 @@ class CompilerTests: XCTestCase {
 	func testEscapeCharactersInSets() {
 		let symbols: [Symbol] = [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("@©Ç\t".characters), exclude: Set()),
+			.CharacterSet(include: Set("@©Ç\t"), exclude: Set()),
 		]
 		let instructions = Compiler.compile(symbols)
 		XCTAssertEqual(instructions, [
 			.GlobalSearchFlag,
-			.CharacterSet(include: Set("@©Ç\t".characters), exclude: Set()),
+			.CharacterSet(include: Set("@©Ç\t"), exclude: Set()),
 		])
 	}
 	
@@ -813,14 +813,14 @@ class CompilerTests: XCTestCase {
 			.CaseInsensitiveFlag,
 			.Character("a"),
 			.Character("b"),
-			.CharacterSet(include: Set("cd".characters), exclude: Set("abcdefghijklmnopqrstuvwxyz0123456789_".characters)),
+			.CharacterSet(include: Set("cd"), exclude: Set("abcdefghijklmnopqrstuvwxyz0123456789_")),
 		]
 		let instructions = Compiler.compile(symbols)
 		XCTAssertEqual(instructions, [
 			.CaseInsensitiveFlag,
 			.Character("a"),
 			.Character("b"),
-			.CharacterSet(include: Set("cd".characters), exclude: Set("abcdefghijklmnopqrstuvwxyz0123456789_".characters)),
+			.CharacterSet(include: Set("cd"), exclude: Set("abcdefghijklmnopqrstuvwxyz0123456789_")),
 		])
 	}
 	
