@@ -58,7 +58,7 @@ let regex = try! Regex(pattern: "/\\w+/ig")
 ## Supported Operations
 
 ### Character Classes
-| Pattern | Descripion | Supported |
+| Pattern | Description | Supported |
 |---------|------------|-----------|
 | `.` | `[^\n\r]` | <ul><li>[ ] </li></ul> |
 | `[^]` | `[\s\S]` | <ul><li>[ ] </li></ul> |
@@ -73,7 +73,7 @@ let regex = try! Regex(pattern: "/\\w+/ig")
 | `[A-Z]` | Any in the range inclusively | <ul><li>[ ] </li></ul> |
 
 ### Anchors (Match positions not characters)
-| Pattern | Descripion | Supported |
+| Pattern | Description | Supported |
 |---------|------------|-----------|
 | `^` | Beginning of string | <ul><li>[ ] </li></ul> |
 | `$` | End of string | <ul><li>[ ] </li></ul> |
@@ -81,7 +81,7 @@ let regex = try! Regex(pattern: "/\\w+/ig")
 | `\B` | Not word boundary | <ul><li>[ ] </li></ul> |
 
 ### Escaped Characters
-| Pattern | Descripion | Supported |
+| Pattern | Description | Supported |
 |---------|------------|-----------|
 | `\0` | Octal escaped character | <ul><li>[ ] </li></ul> |
 | `\00` | Octal escaped character | <ul><li>[ ] </li></ul> |
@@ -112,7 +112,7 @@ let regex = try! Regex(pattern: "/\\w+/ig")
 | `\|` | `|` | <ul><li>[ ] </li></ul> |
 
 ### Groups and Lookaround
-| Pattern | Descripion | Supported |
+| Pattern | Description | Supported |
 |---------|------------|-----------|
 | `(ABC)` | Capture group | <ul><li>[ ] </li></ul> |
 | `(<name>ABC)` | Named capture group | <ul><li>[ ] </li></ul> |
@@ -125,7 +125,7 @@ let regex = try! Regex(pattern: "/\\w+/ig")
 | `(?<!ABC)` | Negative lookbehing | <ul><li>[ ] </li></ul> |
 
 ### Greedy Quantifiers
-| Pattern | Descripion | Supported |
+| Pattern | Description | Supported |
 |---------|------------|-----------|
 | `+` | One or more | <ul><li>[ ] </li></ul> |
 | `*` | Zero or more | <ul><li>[ ] </li></ul> |
@@ -137,7 +137,7 @@ let regex = try! Regex(pattern: "/\\w+/ig")
 | `{n,m}` | n to m | <ul><li>[ ] </li></ul> |
 
 ### Lazy Quantifiers
-| Pattern | Descripion | Supported |
+| Pattern | Description | Supported |
 |---------|------------|-----------|
 | `+?` | One or more | <ul><li>[ ] </li></ul> |
 | `*?` | Zero or more | <ul><li>[ ] </li></ul> |
@@ -148,12 +148,12 @@ let regex = try! Regex(pattern: "/\\w+/ig")
 | `{n,m}?` | n to m | <ul><li>[ ] </li></ul> |
 
 ### Alternation
-| Pattern | Descripion | Supported |
+| Pattern | Description | Supported |
 |---------|------------|-----------|
 | `\|` | Everything before or everything after | <ul><li>[ ] </li></ul> |
 
 ### Flags
-| Pattern | Descripion | Supported |
+| Pattern | Description | Supported |
 |---------|------------|-----------|
 | `i` | Case insensitive | <ul><li>[ ] </li></ul> |
 | `g` | Global | <ul><li>[ ] </li></ul> |
